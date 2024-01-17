@@ -1,0 +1,27 @@
+--- 
+- name: Web Server Config and Website Deployment
+  hosts: managedHosts
+  become: true
+  
+  tasks:
+    - name: Install web server
+      dnf: 
+        name: nginx
+        state: present
+    - name: web server is started and enabled
+      systemd: 
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: deploy static website
+      copy: 
+        src: /home/student/Downloads/static/static/
+        dest: /usr/share/nginx/html/
+      notify: Restart nginx
+
+  handlers: 
+    - name: Restart nginx
+      systemd: 
+        name: nginx
+        stated: restarted  

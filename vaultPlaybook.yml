@@ -1,0 +1,27 @@
+---
+- name: Use encrypted data and Create new user
+  hosts: managedHosts
+  become: true
+
+  vars_files: 
+    - secret_vars.yml
+  vars:
+    mysql_root_password: "redhat"
+    mysql_db_name: "myfirstDatabase"
+    mysql_db_user: "salma"
+  tasks:
+    - name: install pip
+      yum: 
+        name: pip 
+        state: present
+    - name: install PyMySQL
+      pip: 
+        name: PyMySQL
+        executable: pip3
+      become: true
+
+    - name: Create another mysql user
+      command: >
+        mysql -u root -p'{{ mysql_root_password }}' -e
+        "CREATE USER '{{ mysql_db_user }}'@'localhost' IDENTIFIED BY '{{ db_password }}'; GRANT ALL PRIVILEGES ON {{ mysql_db_name }}.* TO '{{ mysql_db_user }}'@'localhost';"
+      ignore_errors: yes
