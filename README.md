@@ -4,14 +4,14 @@ This project showcases the implementation and utilization of Ansible, an open-so
 
 
 
-## Lab 5: Ansible Playbooks for Web Server Configuration
+## Lab 1: Ansible Playbooks for Web Server Configuration
 
 *Objective:*
 The objective of this lab was to automate the configuration of a web server using Ansible playbooks. Specifically, the lab focused on configuring the Apache or Nginx web server, deploying a sample website, and ensuring proper security settings.
 
 In this lab, I expanded my Ansible skills by writing playbooks, which are Ansible's configuration files used to define automation tasks. I learned how to leverage Ansible's modules to configure web servers, such as Apache or Nginx, allowing for efficient and consistent setup across multiple systems. By deploying a sample website and implementing security settings, I gained hands-on experience in automating web server configurations with Ansible.
 
-## Lab 6: Ansible Vault
+## Lab 2: Ansible Vault
 
 *Objective:*
 The objective of this lab was to explore the use of Ansible Vault for encrypting sensitive information, such as database passwords. The lab involved incorporating the encrypted data into an Ansible playbook, thus enhancing security and protection of sensitive data during automation processes.
