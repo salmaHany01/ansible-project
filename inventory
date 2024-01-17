@@ -1,0 +1,12 @@
+[database]
+192.168.88.133
+192.168.88.134
+ 
+[webservers]
+192.168.88.132
+192.168.88.136
+ 
+[application:children]
+database
+webservers
+
