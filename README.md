@@ -10,6 +10,7 @@ I've gained experience in Ansible by creating playbooks—configurations that sp
 This Ansible playbook automates the setup of a MySQL database server. It installs the MySQL client and server, configures the root password, creates a specified database, and sets up a user with defined credentials. Easily customize your MySQL environment using variables such as root password, database name, and user credentials, using vault to encrypt database.
 
 **Security with Ansible Vault**
+
 Additionally, the project explores Ansible Vault, a feature ensuring secure storage and encryption for sensitive data in playbooks. The demonstration involves encrypting critical information, such as database passwords, showcasing how to safeguard confidential data during automation. 
 
 ## Getting Started
