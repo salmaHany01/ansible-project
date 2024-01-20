@@ -19,8 +19,28 @@
         name: PyMySQL
         executable: pip3
       become: true
+    - name: Install MySQL client and server
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - mysql
+        - mysql-server
 
-    - name: Create another mysql user
+    - name: Start MySQL service
+      service:
+        name: mysqld
+        state: started
+        enabled: yes
+
+    - name: Create MySQL database
+      mysql_db:
+        name: "{{ mysql_db_name }}"
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+  
+    - name: Create another mysql user with encrypted password
       command: >
         mysql -u root -p'{{ mysql_root_password }}' -e
         "CREATE USER '{{ mysql_db_user }}'@'localhost' IDENTIFIED BY '{{ db_password }}'; GRANT ALL PRIVILEGES ON {{ mysql_db_name }}.* TO '{{ mysql_db_user }}'@'localhost';"
